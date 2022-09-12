@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1>Inicio de Sesión</h1>
+  <div [formGroup]="loginForm">
+    <ion-item fill="outline">
+      <ion-input placeholder="Email" class="input" inputmode="email" formControlName="username"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="usernameControl.dirty && usernameControl.invalid">
+        {{usernameControl | errorMessage}}
+      </ion-note>
+    </ion-item> 
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input placeholder="Contraseña" class="input" type="password" formControlName="password"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="passwordControl.dirty && passwordControl.invalid">
+        <p class="error-text">{{passwordControl | errorMessage}}</p>
+      </ion-note>
+    </ion-item>
+    <ion-button class="ion-margin-top" [disabled]="loginForm.invalid" expand="block" id="btn" color="dark" (click)="login()">
+      INICIAR SESIÓN
+    </ion-button>
+  </div>
+  <p style="padding-top: 20px;">¿No estás registrado aún?</p>
+  <ion-button href="/register" expand="block" id="btn" color="dark">
+    REGISTRAR
+  </ion-button>
+</ion-content>

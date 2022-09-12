@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-router-link href="javascript:history.back()" color="black">
+    <ion-icon name="return-up-back-outline" id="back"></ion-icon>
+  </ion-router-link>
+  <h1>Registro | Datos de la cuenta</h1>
+  <div [formGroup]="accountDataForm">
+    <ion-item fill="outline">
+      <ion-input placeholder="Email" inputmode="email" formControlName="email"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="emailControl.dirty && emailControl.invalid">
+        {{emailControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input maxlength="15" placeholder="Contraseña" type="password" formControlName="password"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="passwordControl.dirty && passwordControl.invalid">
+        {{passwordControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-button [disabled]="accountDataForm.invalid" class="ion-margin-top" expand="block" id="btn" color="dark" (click)="saveForm()" [disabled]="accountDataForm.invalid">
+      SIGUIENTE
+    </ion-button>
+  </div>
+</ion-content>

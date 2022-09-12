@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-router-link href="javascript:history.back()" color="black">
+    <ion-icon name="return-up-back-outline" id="back"></ion-icon>
+  </ion-router-link>
+  <h1>Registro | Datos personales</h1>
+  <div [formGroup]="userDataForm">
+    <ion-item fill="outline">
+      <ion-input placeholder="Nombres" maxlength="50" formControlName="name"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="namesControl.dirty && namesControl.invalid">
+        {{namesControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input placeholder="Apellidos" maxlength="50" formControlName="last_name"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="lastnameControl.dirty && lastnameControl.invalid">
+        {{lastnameControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input placeholder="Cédula" maxlength="20" formControlName="nit"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="nitControl.dirty && nitControl.invalid">
+        {{nitControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input placeholder="Dirección" maxlength="50" formControlName="address"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="addressControl.dirty && addressControl.invalid">
+        {{addressControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-input placeholder="Numero de contacto" maxlength="10" inputmode="tel" type="tel" formControlName="contact"></ion-input>
+      <ion-note slot="error" color="danger" *ngIf="contactControl.dirty && contactControl.invalid">
+        {{contactControl | errorMessage}}
+      </ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-top">
+      <ion-radio-group value="parent">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="start" (ionChange)="isHealthProfControl.setValue(!isParentControl.value)" formControlName="is_parent" color="dark"></ion-checkbox>
+              <ion-label>Es Padre/Madre</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="start" (ionChange)="isParentControl.setValue(!isHealthProfControl.value)" formControlName="is_health_professional" color="dark" value="hp"></ion-checkbox>
+              <ion-label>Es Profesional de la salud</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-item>
+    <ion-button [disabled]="userDataForm.invalid" class="ion-margin-top" expand="block" id="btn-ft" color="dark" (click)="saveForm()">
+      AGREGAR NIÑOS(AS)
+    </ion-button>
+  </div>
+</ion-content>

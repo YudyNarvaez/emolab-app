@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+    <ion-router-link href="javascript:history.back()" color="black">
+        <ion-icon name="return-up-back-outline" id="back"></ion-icon>
+    </ion-router-link>
+    <ion-icon (click)="logout()" style="float: right;" name="exit-outline"></ion-icon>
+    <h1>Bienvenido {{user.name}}</h1>
+    <div [formGroup]="analisisForm">
+        <ion-item fill="outline" [counter]="true">
+            <ion-textarea formControlName="text" placeholder="Ingresa la frase para el análisis" maxlength="150" #text></ion-textarea>
+        </ion-item>
+        <ion-item fill="outline" class="ion-margin-top" *ngIf="user">
+            <ion-select formControlName="kid" interface="popover" placeholder="Selecciona el niño que dijo la frase">
+                <ion-select-option *ngFor="let kid of user.kids" [value]="kid.id">{{kid?.name}} {{kid?.last_name}}</ion-select-option>
+              </ion-select>
+        </ion-item>  
+    </div>
+     
+    
+    <ion-button [disabled]="analisisForm.invalid || analazing" class="ion-margin-top" expand="block" color="dark" (click)="analyzeText(text.value)">
+        <span *ngIf="!analazing">ANALIZAR EMOCIÓN</span>
+        <ion-spinner *ngIf="analazing" name="dots"></ion-spinner>
+    </ion-button>
+</ion-content>
