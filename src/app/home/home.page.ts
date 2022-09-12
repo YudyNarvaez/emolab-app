@@ -5,6 +5,7 @@ import { LoginService } from '../login/service/login.service';
 import { HomeService } from './service/home.service';
 import { ToastService } from '../shared/services/toast/toast.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import {mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -45,10 +46,18 @@ export class HomePage implements OnInit {
   analyzeText(text: string) {
     this.analazing = true;
     const body = { 'sentencia': text };
-    this.homeService.getTextAnalasys(body).subscribe({
+    let analysis = null;
+    this.homeService.getTextAnalasys(body).pipe(
+      mergeMap((result:any) => {
+        analysis = result;
+        const params = {kid_id:this.analisisForm.get('kid').value, text: text, analysis:result}
+        return this.homeService.saveResult(params);
+      })
+    ).subscribe({
       next: data => {
+        console.log(analysis)
         this.analazing = false
-        this.router.navigate(['/results'], { state: { data } });
+        this.router.navigate(['/results'], { state: { data:analysis } });
         this.analisisForm.reset();
       },
       error: (err: any) =>{

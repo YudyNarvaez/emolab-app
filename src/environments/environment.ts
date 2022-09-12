@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:8000/api',
-  analysisURL: 'https://xoespgkaoe.execute-api.us-west-1.amazonaws.com/prod/sentimiento/'
+  apiURL: 'http://localhost:8000/api'
 };
 
 /*

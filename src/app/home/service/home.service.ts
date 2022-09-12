@@ -7,8 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeService {
 
-  API_URL = environment.apiURL
-  ANALYSIS_URL = environment.analysisURL
+  API_URL = environment.apiURL;
   constructor(private http: HttpClient) { }
 
   getUserData(){
@@ -17,7 +16,12 @@ export class HomeService {
   }
 
   getTextAnalasys(params: any){
-    const url = `${this.ANALYSIS_URL}`;
+    const url = `${this.API_URL}/v1/sentiments/sentimiento`;
+    return this.http.post(url, params);
+  }
+
+  saveResult(params: any){
+    const url = `${this.API_URL}/v1/users/save-result/`;
     return this.http.post(url, params);
   }
 }
