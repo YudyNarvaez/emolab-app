@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonDatetime, IonModal } from '@ionic/angular';
+import { IonDatetime, IonModal, NavController } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { mergeMap } from 'rxjs/operators';
 import { LoginService } from '../login/service/login.service';
@@ -32,6 +32,7 @@ export class RegisterNPage implements OnInit {
   copyKid: any;
 
   constructor(
+    private navController: NavController,
     private loginService: LoginService,
     private router: Router,
     private registerState: RegisterStateService,
@@ -132,6 +133,10 @@ export class RegisterNPage implements OnInit {
 
   get hasAspergerControl(){
     return this.kidsDataForm.get('has_asperger')
+  }
+
+  goBack(){
+    this.navController.back()
   }
 
 }

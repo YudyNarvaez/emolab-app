@@ -1,8 +1,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-    <ion-router-link href="javascript:history.back()" color="black">
-        <ion-icon name="return-up-back-outline" id="back"></ion-icon>
-    </ion-router-link>
-    <ion-icon (click)="logout()" style="float: right;" name="exit-outline"></ion-icon>
+    <ion-button style="float: right" fill="clear" color="dark" (click)="logout()">
+        <ion-icon name="exit-outline"></ion-icon>
+    </ion-button>
     <h1>Bienvenido {{user.name}}</h1>
     <div [formGroup]="analisisForm">
         <ion-item fill="outline" [counter]="true">

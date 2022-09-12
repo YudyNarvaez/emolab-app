@@ -9,6 +9,7 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 @NgModule({
   declarations: [ErrorMessagePipe],
   imports: [
+    EmojiModule,
     CommonModule,
     FormsModule,
     IonicModule,
@@ -20,7 +21,7 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
     ErrorMessagePipe,
     FormsModule,
     ReactiveFormsModule,
-    EmojiModule
+    EmojiModule,
   ]
 })
 export class SharedModule { }

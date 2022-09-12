@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { RegisterStateService } from '../shared/services/register-state/register-state.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class RegisterCPage implements OnInit {
   });
 
   constructor(
+    private navController: NavController,
     private router: Router,
     private registerState: RegisterStateService,
     private formBuilder: FormBuilder) { }
@@ -60,6 +62,10 @@ export class RegisterCPage implements OnInit {
 
   get isHealthProfControl(){
     return this.userDataForm.get('is_health_professional');
+  }
+
+  goBack(){
+    this.navController.back()
   }
 
 }

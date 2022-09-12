@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { RegisterStateService } from '../shared/services/register-state/register-state.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class RegisterPage implements OnInit {
   });
   
   constructor(
+    private navController: NavController,
     private registerState: RegisterStateService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -36,5 +38,9 @@ export class RegisterPage implements OnInit {
 
   get passwordControl(){
     return this.accountDataForm.get('password');
+  }
+
+  goBack(){
+    this.navController.back()
   }
 }

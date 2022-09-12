@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-router-link href="javascript:history.back()" color="black">
-    <ion-icon name="return-up-back-outline" id="back"></ion-icon>
-  </ion-router-link>
+  <ion-button fill="clear" color="dark" (click)="goBack()">
+    <ion-icon slot="icon-only" name="return-up-back-outline"></ion-icon>
+  </ion-button>
   <h1>Resultados</h1>
   <div *ngIf="emotion">
     <p class="result-p2">El análisis muestra que en el texto predomina la emoción:</p>
@@ -12,73 +12,37 @@
       <ion-label fill="solid">
         Alegría {{probs?.joy * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="smile" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="smile" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
     <ion-item class="surprise-item ion-margin-top">
       <ion-label fill="solid">
         Asombro {{probs?.surprise * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="open_mouth" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="open_mouth" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
     <ion-item class="anger-item ion-margin-top">
       <ion-label fill="solid">
         Enfado {{probs?.anger * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="angry" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="angry" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
     <ion-item class="sadness-item ion-margin-top">
       <ion-label fill="solid">
         Tristeza {{probs?.sadness * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="white_frowning_face" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="white_frowning_face" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
     <ion-item class="disgust-item ion-margin-top">
       <ion-label fill="solid">
         Desagrado {{probs?.disgust * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="face_vomiting" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="face_vomiting" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
     <ion-item class="others-item ion-margin-top">
       <ion-label fill="solid">
         Otros {{probs?.others * 100 | number: '1.0-0'}}%
       </ion-label>
-      <ngx-emoji emoji="neutral_face" set="twitter" size="24"></ngx-emoji>
+      <ngx-emoji emoji="neutral_face" set="twitter" [size]="$any(24)"></ngx-emoji>
     </ion-item>
   </ion-list>
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col>
-        <p class="result-p">Alegría</p>
-        <p class="result-p">{{probs?.joy * 100 | number: '1.0-0'}}%</p>
-        <ion-img src="../../assets/img/alegria.png" class="result-img"></ion-img>
-      </ion-col>
-      <ion-col>
-        <p class="result-p">Asombro</p>
-        <ion-img src="../../assets/img/sorpresa.png" class="result-img"></ion-img>
-        <p class="result-p">{{probs?.surprise * 100 | number: '1.0-0'}}%</p>
-      </ion-col>
-      <ion-col>
-        <p class="result-p">Enfado</p>
-        <ion-img src="../../assets/img/enojo.png" class="result-img"></ion-img>
-        <p class="result-p">{{probs?.anger * 100 | number: '1.0-0'}}%</p>
-      </ion-col>      
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <p class="result-p">Tristeza</p>
-        <ion-img src="../../assets/img/tristeza.png" class="result-img"></ion-img>
-        <p class="result-p">{{probs?.sadness * 100 | number: '1.0-0'}}%</p>
-      </ion-col>
-      <ion-col>
-        <p class="result-p">Desagrado</p>
-        <ion-img src="../../assets/img/desagrado.png" class="result-img"></ion-img>
-        <p class="result-p">{{probs?.disgust * 100 | number: '1.0-0'}}%</p>
-      </ion-col>
-      <ion-col>
-        <p class="result-p">Otros</p>
-        <ion-img src="../../assets/img/desagrado.png" class="result-img"></ion-img>
-        <p class="result-p">{{probs?.others * 100 | number: '1.0-0'}}%</p>
-      </ion-col>   
-    </ion-row>
-  </ion-grid> -->
 </ion-content>

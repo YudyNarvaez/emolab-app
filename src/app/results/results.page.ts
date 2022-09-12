@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-results',
@@ -11,7 +12,9 @@ export class ResultsPage implements OnInit {
   emotion = '';
   probs: any = {};
 
-  constructor(private router: Router) { }
+  constructor(
+    private navController: NavController,
+    private router: Router) { }
 
   ngOnInit() {
     this.emotion = this.router.getCurrentNavigation().extras.state.data.emocion;
@@ -38,4 +41,9 @@ export class ResultsPage implements OnInit {
         break;
     }
   }
+
+  goBack(){
+    this.navController.back()
+  }
+
 }

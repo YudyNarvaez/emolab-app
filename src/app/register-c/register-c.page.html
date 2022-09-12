@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-router-link href="javascript:history.back()" color="black">
-    <ion-icon name="return-up-back-outline" id="back"></ion-icon>
-  </ion-router-link>
+  <ion-button fill="clear" color="dark" (click)="goBack()">
+    <ion-icon slot="icon-only" name="return-up-back-outline"></ion-icon>
+  </ion-button>
   <h1>Registro | Datos personales</h1>
   <div [formGroup]="userDataForm">
     <ion-item fill="outline">
